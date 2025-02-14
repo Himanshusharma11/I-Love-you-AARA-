@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <script>
+        // Your JavaScript code starts here
+
+        const num_of_hearts = 300; // Increased the number of hearts to 300
+        const driftX = 50;
+        const gravity = 100;
+        const update_speed = 900; // millisecond
+
+        const heartTypes = ["♥"]; // Only using the "good" heart symbol
+
+        const viewportWidth = document.documentElement.clientWidth;
+        const viewportHeight = document.documentElement.clientHeight;
+
+        const viewSpaceWidth = viewportWidth + 50;
+        const viewSpaceHeight = viewportHeight + 50;
+
+        const randomInt = ((xmin, xmax) => (Math.floor(Math.random() * (xmax + 1 - xmin) + xmin)));
+        const randomReal = ((xmin, xmax) => (Math.random() * (xmax - xmin) + xmin));
+        const randomColor = (() => ("hsla" + "(" + randomInt(0, 360) + "," +
+                                    randomInt(70, 100) + "%," +
+                                    randomInt(40, 60) + "%," +
+                                    randomReal(.8, 1) + ")"));
+
+        const f_restart_heart = ((xx) => {
+            xx["xxleft"] = randomInt(0, viewSpaceWidth);
+            xx.style.left = xx["xxleft"] + "px";
+            xx["xxtop"] = randomInt(0, viewSpaceHeight) - viewSpaceHeight;
+            xx.style.top = xx["xxtop"] + "px";
+            xx["xrotate"] = randomInt(-150, 150);
+            xx.style.transform = "rotate(" + xx["xrotate"] + "deg)";
+        });
+
+        const heart_box = document.createElement("div");
+        heart_box.setAttribute("id", "heart_box");
+
+        const f_new_heart = (() => {
+            const yy = document.createElement("div");
+            yy.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+            yy["xxleft"] = randomInt(0, viewSpaceWidth);
+            yy.style.left = yy["xxleft"] + "px";
+            yy["xxtop"] = -90;
+            yy.style.top = yy["xxtop"] + "px";
+            yy["xrotate"] = randomInt(-150, 150);
+            yy.style.transform = "rotate(" + yy["xrotate"] + "deg)";
+            yy.style.color = randomColor();
+            yy["xsize"] = 10 + randomInt(0, 30);
+            yy.style.fontSize = yy["xsize"] + "px";
+
+            yy.style.position = "absolute";
+            yy.style.zIndex = 99999999; // Ensures hearts appear on top of everything
+            yy.style.transition = "top linear 1.5s, left linear 1.5s, transform linear 1.5s";
+            yy.style.opacity = "0.5"; // Set opacity to 80%
+
+            return yy;
+        });
+
+        for (let i = 0; i < num_of_hearts; i++) {
+            heart_box.appendChild(f_new_heart());
+        }
+
+        document.body.appendChild(heart_box);
+
+        const heartNodes = Array.from(heart_box.children);
+
+        const f_update_positions = (() => {
+            heartNodes.forEach((xx) => {
+                xx["xxleft"] += (() => {
+                    const rnd = Math.random();
+                    if (rnd < 0.3333) {
+                        return 0;
+                    } else if (rnd < 0.6666) {
+                        return driftX;
+                    } else {
+                        return -driftX;
+                    }
+                })();
+
+                xx["xxtop"] = xx["xxtop"] + ((xx["xsize"] / 20) * gravity);
+
+                if (xx["xxtop"] > (viewSpaceHeight) + viewSpaceHeight / 10) {
+                    f_restart_heart(xx);
+                } else {
+                    xx["xxtop"] = xx["xxtop"] + gravity / 10 * randomInt(0, 10);
+                }
+
+                if (xx["xrotate"] !== 0) {
+                    xx["xrotate"] = xx["xrotate"] + randomInt(-30, 60);
+                    xx.style.transform = "rotate(" + xx["xrotate"] + "deg)";
+                }
+
+                xx.style.left = xx["xxleft"] + "px";
+                xx.style.top = xx["xxtop"] + "px";
+            });
+        });
+
+        setInterval(f_update_positions, update_speed);
+
+        // End of your JavaScript code
+    </script>
+ <div><img style="background-color: #ebd7b5;" src="img9.png" class="img2"></div>  
+ <div class="gallery">
+    <div class="gallery-item">
+        <img src="img28.jpg" alt="Image 1">
+    </div>
+    <div class="gallery-item">
+        <img src="img29.jpg" alt="Image 2">
+    </div>
+    <div class="gallery-item">
+        <img src="img32.jpg" alt="Image 3">
+    </div>
+    <div class="gallery-item">
+        <img src="img8.jpg" alt="Image 4">
+    </div>
+    <div class="gallery2">
+        <div class="gallery2-item">
+            <img src="img3.jpg" alt="Image 1">
+        </div>
+        <div class="gallery2-item">
+            <img src="img1.jpg" alt="Image 2">
+        </div>
+        <div class="gallery2-item">
+            <img src="img15.jpg" alt="Image 3">
+        </div>
+        <div class="gallery2-item">
+            <img src="img17.jpg" alt="Image 3">
+        </div>
+    </div>
+    <div class="gallery3">
+        <div class="gallery3-item">
+            <img src="img27.jpg" alt="Image 1">
+        </div>
+        <div class="gallery3-item">
+            <img src="img23.jpg" alt="Image 2">
+        </div>
+        <div class="gallery3-item">
+            <img src="img21.jpg" alt="Image 3">
+        </div>
+        <div class="gallery3-item">
+            <img src="img18.jpg" alt="Image 4">
+        </div>
+    </div>
+    <p style="font-family: 'ap', sans-serif; font-size: 20px; position:absolute; top: 60%; margin-left: 135%; z-index: 5;">Dekho kitne Cute Lagte Hain Hum sath mein ,Haina!. Tum kya jo esplanade mein chit lagayi thi use bhul gayi:) jo Tumne No boldiyaa. Aara maano ya na maano Tum Mere sath hi acchi lagti ho to main  ab tumhe Choice nahi Dunga ab tum naa nahi keh saktiii tumhe haan kehna hi pagedaaaaa<3<3<3<3, Aur ab Sawaal Valentine's Day ka Nahi hai ab main puchhta hu "Will you be with me for my whole life?? and alsoo Kya tum AAne wale 70-80 saal free ho?? kyunki mujhe tumhara Time waste Karna Hai."</p>
+    <a href="pro2.html"><button class="btn">Yes!!</button></a>
+    <a href="pro2.html"><button class="btn2">Yessss!!!</button></a>
+    
+</div>
+</body>
+</html>

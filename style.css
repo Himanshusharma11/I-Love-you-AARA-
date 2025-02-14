@@ -1,0 +1,139 @@
+@font-face {
+    font-family: ap;
+    src: url(Apricot-BF650c4a6357ce1.otf);
+}
+body{
+    position: relative;
+    height: 100vh;
+    margin: 0;
+}
+
+.btn{
+    font-family: 'ap', sans-serif;
+    font-size: 35px;
+    border: none;
+    border-color: #ad190c;
+    color: #ad190c;
+    padding: 4px 6px;
+    border-radius: 10px;
+    position: absolute;
+    background: transparent;
+    height: 30px;
+    width: 40px;
+    top: 45.5%;
+    right: 54%;
+    z-index: 2;
+    rotate: -9deg;
+    transition-duration: 1s;
+}
+.btn:hover{
+    scale: 1.1;
+}
+
+.btn2{
+    border: none;
+    font-size: 35px;
+    border-color: #ad190c;
+    color: #ad190c;
+    border-radius: 10px;
+    font-family: 'ap', sans-serif;
+    position: absolute;
+    background: transparent;
+    height: 30px;
+    width: 40px;
+    top: 43%;
+    right: 48%;
+    z-index: 2;
+    rotate: -9deg;
+    transition-duration: 1s;
+}
+.btn2:hover{
+    scale: 1.1;
+}
+.img2{
+    position: relative;
+    margin-top: 40px;
+    margin-left: 150px;
+    scale: 1.1;
+}
+
+div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.gallery {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    grid-template-rows: repeat(2, 200px);
+    gap: 10px;
+    top: 23%;
+    left: 5%;
+}
+
+.gallery-item {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.5);
+}
+
+.gallery2 {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    grid-template-rows: repeat(2, 200px);
+    gap: 10px;
+    top: 37%;
+    left: 75%;
+}
+
+.gallery2-item {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery2-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery2-item:hover img {
+    transform: scale(1.5);
+}
+
+#heart_box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+ /* High z-index to ensure hearts appear on top of all elements */
+}
+
+#heart_box div {
+    position: absolute;
+    user-select: none;
+}

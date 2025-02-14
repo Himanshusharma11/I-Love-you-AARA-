@@ -1,0 +1,63 @@
+@font-face {
+    font-family: ap;
+    src: url(Apricot-BF650c4a6357ce1.otf);
+}
+body{
+    position: relative;
+    height: 80vh;
+    margin: 0;
+}
+.img1{
+    
+    scale: 1.1;
+    margin-top: 80px;
+    margin-left: 300px;
+    transition: 2s;
+}
+.img1:active{
+    scale: 1.5;
+    transition: 3s;
+}
+.gallery2 {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(2, 200px);
+    gap: 10px;
+    top: 5%;
+    left: 50%;
+}
+
+.gallery2-item {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery2-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery2-item:hover img {
+    transform: scale(1.5);
+}
+
+#heart_box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99999999;/* High z-index to ensure hearts appear on top of all elements */
+}
+
+#heart_box div {
+    position: absolute;
+    user-select: none;
+}
